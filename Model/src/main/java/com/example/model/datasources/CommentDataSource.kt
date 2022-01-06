@@ -1,6 +1,7 @@
 package com.example.model.datasources
 
 import com.example.model.models.Comment
+import com.example.model.models.GeneralResponse
 import retrofit2.Response
 
 /**
@@ -8,5 +9,5 @@ import retrofit2.Response
  **/
 
 interface CommentDataSource {
-    suspend fun getComments() : Response<List<Comment>>
+    suspend fun getComments() : GeneralResponse<List<Comment>>
 }
