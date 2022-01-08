@@ -9,6 +9,6 @@ import com.example.model.models.Comment
 
 sealed class CommentsState {
     class OnCommentsState(val comments: List<Comment>) : CommentsState()
-    class OnError(val errorMessage : String) : CommentsState()
+    class OnErrorState(val errorMessage : String) : CommentsState()
     // other states ...
 }

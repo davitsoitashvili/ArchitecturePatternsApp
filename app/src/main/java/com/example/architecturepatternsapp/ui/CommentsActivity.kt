@@ -44,7 +44,7 @@ class CommentsActivity : AppCompatActivity() {
         commentsVm.getCommentsState().observe(this) {
             when (it) {
                 is CommentsState.OnCommentsState -> updateCommentsAdapter(it.comments)
-                is CommentsState.OnError -> showErrorMessage(it.errorMessage)
+                is CommentsState.OnErrorState -> showErrorMessage(it.errorMessage)
             }
         }
     }

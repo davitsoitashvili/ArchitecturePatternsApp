@@ -33,7 +33,7 @@ class CommentsVm(private val commentDataSource: CommentDataSource) : ViewModel()
                 is GeneralResponse.Success -> commentsState.value =
                     CommentsState.OnCommentsState(getCommentsWithEventId(response.result))
                 is GeneralResponse.Error -> commentsState.value =
-                    CommentsState.OnError(response.errorMessage)
+                    CommentsState.OnErrorState(response.errorMessage)
             }
         }
     }

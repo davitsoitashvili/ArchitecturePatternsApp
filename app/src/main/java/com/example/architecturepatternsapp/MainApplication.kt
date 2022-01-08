@@ -27,11 +27,11 @@ class MainApplication : Application() {
     private fun initKoin() {
         startKoin {
             androidContext(applicationContext)
-            loadKoinModules(getGeneralModule())
+            loadKoinModules(getAppModule())
         }
     }
 
-    private fun getGeneralModule() = module {
+    private fun getAppModule() = module {
         single { RetrofitClient().getApiClient() }
         single { get<Retrofit>().create(CommentApiService::class.java) }
         single<CommentDataSource> { CommentDataSourceImpl(get()) }
