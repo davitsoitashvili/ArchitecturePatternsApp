@@ -1,4 +1,4 @@
-package com.example.architecturepatternsapp.presenter
+package com.example.architecturepatternsapp.ui.presenter
 
 import com.example.architecturepatternsapp.ui.CommentsActivityCallback
 import com.example.model.models.Comment

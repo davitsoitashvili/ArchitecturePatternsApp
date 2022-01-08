@@ -1,8 +1,8 @@
 package com.example.architecturepatternsapp
 
 import android.app.Application
-import com.example.architecturepatternsapp.presenter.CommentsPresenter
-import com.example.architecturepatternsapp.presenter.CommentsPresenterImpl
+import com.example.architecturepatternsapp.ui.presenter.CommentsPresenter
+import com.example.architecturepatternsapp.ui.presenter.CommentsPresenterImpl
 import com.example.model.apiservice.comment.CommentApiService
 import com.example.model.datasources.CommentDataSource
 import com.example.model.datasources.CommentDataSourceImpl
@@ -27,11 +27,11 @@ class MainApplication : Application() {
     private fun initKoin() {
         startKoin {
             androidContext(applicationContext)
-            loadKoinModules(getGeneralModule())
+            loadKoinModules(getAppModule())
         }
     }
 
-    private fun getGeneralModule() = module {
+    private fun getAppModule() = module {
         single { RetrofitClient().getApiClient() }
         single { get<Retrofit>().create(CommentApiService::class.java) }
         single<CommentDataSource> { CommentDataSourceImpl(get()) }

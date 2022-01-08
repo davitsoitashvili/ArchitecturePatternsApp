@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.architecturepatternsapp.adapters.CommentsAdapter
 import com.example.architecturepatternsapp.databinding.ActivityCommentsBinding
-import com.example.architecturepatternsapp.presenter.CommentsPresenter
+import com.example.architecturepatternsapp.ui.presenter.CommentsPresenter
 import com.example.model.models.Comment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -46,7 +46,7 @@ class CommentsActivity : AppCompatActivity(), CommentsActivityCallback<List<Comm
     }
 
     override suspend fun errorCallback(errorMessage: String) {
-        showToastMessage(errorMessage)
+        showErrorMessage(errorMessage)
     }
 
     override fun onDestroy() {
@@ -54,7 +54,7 @@ class CommentsActivity : AppCompatActivity(), CommentsActivityCallback<List<Comm
         super.onDestroy()
     }
 
-    private fun showToastMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    private fun showErrorMessage(errorMessage: String) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
     }
 }
