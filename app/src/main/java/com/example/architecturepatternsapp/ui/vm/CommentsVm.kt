@@ -1,4 +1,4 @@
-package com.example.architecturepatternsapp.vm
+package com.example.architecturepatternsapp.ui.vm
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

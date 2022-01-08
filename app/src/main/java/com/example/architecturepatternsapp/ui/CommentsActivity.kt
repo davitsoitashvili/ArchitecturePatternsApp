@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.architecturepatternsapp.adapters.CommentsAdapter
 import com.example.architecturepatternsapp.databinding.ActivityCommentsBinding
-import com.example.architecturepatternsapp.vm.CommentsVm
+import com.example.architecturepatternsapp.ui.vm.CommentsVm
 import org.koin.android.ext.android.inject
 
 class CommentsActivity : AppCompatActivity() {
@@ -42,11 +42,11 @@ class CommentsActivity : AppCompatActivity() {
         }
 
         commentsVm.getErrorMessage().observe(this) {
-            showToastMessage(it)
+            showErrorMessage(it)
         }
     }
 
-    private fun showToastMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    private fun showErrorMessage(errorMessage: String) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
     }
 }

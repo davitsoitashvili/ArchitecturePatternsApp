@@ -1,12 +1,11 @@
 package com.example.architecturepatternsapp
 
 import android.app.Application
-import com.example.architecturepatternsapp.vm.CommentsVm
+import com.example.architecturepatternsapp.ui.vm.CommentsVm
 import com.example.model.apiservice.comment.CommentApiService
 import com.example.model.datasources.CommentDataSource
 import com.example.model.datasources.CommentDataSourceImpl
 import com.example.model.network.RetrofitClient
-import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
@@ -28,11 +27,11 @@ class MainApplication : Application() {
     private fun initKoin() {
         startKoin {
             androidContext(applicationContext)
-            loadKoinModules(getGeneralModule())
+            loadKoinModules(getAppModule())
         }
     }
 
-    private fun getGeneralModule() = module {
+    private fun getAppModule() = module {
         single { RetrofitClient().getApiClient() }
         single { get<Retrofit>().create(CommentApiService::class.java) }
         single<CommentDataSource> { CommentDataSourceImpl(get()) }
