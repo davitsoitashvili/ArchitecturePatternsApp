@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ArchitecturePatternsApp">
         <activity
-            android:name="com.example.architecturepatternsapp.ui.CommentActivity"
+            android:name="com.example.architecturepatternsapp.ui.CommentsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
