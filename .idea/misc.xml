@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/comment_item_background.xml" value="0.29259259259259257" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.189209726443769" />
         <entry key="app/src/main/res/layout/comment_recycler_item.xml" value="0.1621376811594203" />
       </map>
     </option>

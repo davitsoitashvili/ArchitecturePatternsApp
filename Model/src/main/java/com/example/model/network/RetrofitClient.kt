@@ -10,16 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RetrofitClient {
     private val baseUrl = "https://jsonplaceholder.typicode.com/"
 
-    private var retrofit: Retrofit? = null
-
-    fun getApiClient(): Retrofit {
-        if (retrofit == null) {
-            retrofit = Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-        }
-
-        return retrofit!!
-    }
+    fun getApiClient(): Retrofit = Retrofit.Builder()
+        .baseUrl(baseUrl)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 }

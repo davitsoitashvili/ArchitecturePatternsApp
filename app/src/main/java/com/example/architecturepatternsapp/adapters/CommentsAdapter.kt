@@ -31,13 +31,19 @@ class CommentsAdapter(private var comments: List<Comment>) :
 
     class CommentViewHolder(private val binding: CommentRecyclerItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun onBindComment(comment: Comment) {
-
+            with(binding) {
+                commentIdTextView.text = "Comment ID : ${comment.id}"
+                commentNameTextView.text = "Comment Name : ${comment.name}"
+                commentEmailTextView.text = "Comment Email : ${comment.email}"
+                commentBodyTextView.text = "Comment Body : ${comment.body}"
+            }
         }
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateComments(comments : List<Comment>) {
+    fun updateComments(comments: List<Comment>) {
         this.comments = comments
         notifyDataSetChanged()
     }
