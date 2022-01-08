@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.architecturepatternsapp.adapters.CommentsAdapter
-import com.example.architecturepatternsapp.databinding.ActivityMainBinding
+import com.example.architecturepatternsapp.databinding.ActivityCommentsBinding
 import com.example.model.datasources.CommentDataSource
 import com.example.model.models.Comment
 import com.example.model.models.GeneralResponse
@@ -15,9 +15,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 
-class CommentActivity : AppCompatActivity() {
+class CommentsActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding : ActivityCommentsBinding
 
     private lateinit var commentsAdapter: CommentsAdapter
 
@@ -25,7 +25,7 @@ class CommentActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityCommentsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initCommentAdapter()
         makeCommentsApiCall()
@@ -45,7 +45,7 @@ class CommentActivity : AppCompatActivity() {
                         commentsAdapter.updateComments(getCommentsWithEventId(response.result))
                     }
                 }
-                is GeneralResponse.Error -> showToastMessage(response.errorMessage)
+                is GeneralResponse.Error -> showErrorMessage(response.errorMessage)
             }
         }
     }
@@ -62,7 +62,7 @@ class CommentActivity : AppCompatActivity() {
 
     private fun isCommentIdEven(comment : Comment) = comment.id.toInt() % 2 == 0
 
-    private fun showToastMessage(message : String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    private fun showErrorMessage(errorMessage : String) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
     }
 }
